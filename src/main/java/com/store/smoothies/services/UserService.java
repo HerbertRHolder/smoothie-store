@@ -1,2 +1,1 @@
-package com.store.smoothies.services;public class UserService {
-}
+package com.store.smoothies.services;

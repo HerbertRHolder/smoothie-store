@@ -1,2 +1,17 @@
-package com.store.smoothies.controllers;public class CheckoutController {
+package com.store.smoothies.controllers;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class CheckoutController {
+
+
+    @GetMapping("/checkout")
+    public String displayCheckoutPage(){
+        return "checkout";
+    }
+
 }
