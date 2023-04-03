@@ -51,13 +51,20 @@ public class User {
         this.id = id;
     }
 
+    public String getEmail() {
+        return email;
+    }
     public String getUsername() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public void setUsername(String email) {
         this.email = email;
     }
+
 
     public String getFirstName() {
         return firstName;
