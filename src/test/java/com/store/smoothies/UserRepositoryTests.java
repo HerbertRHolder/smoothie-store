@@ -5,6 +5,7 @@ import com.store.smoothies.models.User;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -26,18 +27,26 @@ public class UserRepositoryTests {
 
     // test methods go below
     @Test
-    public void testCreateUser() {
+    @Order(1)
+    public void testCreateUsers() {
+        User savedUser = new User();
         User user = new User();
-        user.setUsername("ravikumar@gmail.com");
-        user.setPassword("ravi2020");
-        user.setFirstName("Ravi");
-        user.setLastName("Kumar");
+            user.setUsername("ravikumar@gmail.com");
+            user.setPassword("ravi2020");
+            user.setFirstName("Ravi");
+            user.setLastName("Kumar");
+            savedUser = repo.save(user);
 
-        User savedUser = repo.save(user);
+
 
         User existUser = entityManager.find(User.class, savedUser.getId());
 
         assertThat(user.getUsername()).isEqualTo(existUser.getUsername());
+
+    }
+    @Test
+    @Order(2)
+    public void testGetUser(){
 
     }
 }
