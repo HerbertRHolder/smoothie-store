@@ -1,32 +1,36 @@
 package com.store.smoothies.services;
 
 import com.store.smoothies.models.User;
-import com.store.smoothies.models.UserWithRoles;
 import com.store.smoothies.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class UserDetailsLoader implements UserDetailsService {
-    private final UserRepository users;
+public class UserServiceImpl {
 
-    public UserDetailsLoader(UserRepository users) {
-        this.users = users;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository,
+                           PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println(username);
-        User user = users.findByEmail(username);
-        System.out.println(user.getUsername());
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 
-        if (user == null) {
-            throw new UsernameNotFoundException("No user found for " + username);
-        }
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-        return new UserWithRoles(user);
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public void registerUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
     }
 }

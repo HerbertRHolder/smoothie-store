@@ -42,7 +42,7 @@ public class UserRepositoryTests {
         User existUser = entityManager.find(User.class, savedUser.getId());
 
         assertThat(user.getUsername()).isEqualTo(existUser.getUsername());
-
+        repo.delete(user);
     }
     @Test
     @Order(2)
