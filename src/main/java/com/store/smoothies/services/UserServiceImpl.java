@@ -3,9 +3,11 @@ package com.store.smoothies.services;
 import com.store.smoothies.models.User;
 import com.store.smoothies.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl {
 
     private final UserRepository userRepository;
@@ -22,7 +24,7 @@ public class UserServiceImpl {
     }
 
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByUsername(email);
     }
 
     public List<User> findAll() {

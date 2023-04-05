@@ -1,5 +1,6 @@
 package com.store.smoothies;
 
+import com.store.smoothies.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +15,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    private UserDetailsLoader usersLoader;
 
+    public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,19 +49,16 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/","home", "/register", "/results", "/css/**", "/js/**", "/img/**", "/about", "/error/**", "/aboutUs", "/mission", "/charge", "/checkout", "/success") // anyone can see the home and the ads pages
+                .requestMatchers("/", "/register", "/css/**", "/js/**", "/img/**") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/profile", // only authenticated users can access these pages
-                        "/booking",
-                        "/profile/edit", "/profile/delete",
-                        "flight-info"
+                        "/checkout" // only authenticated users can access these pages
+
                 )
-                .authenticated()
-        ;
+                .authenticated();
         return http.build();
     }
 
