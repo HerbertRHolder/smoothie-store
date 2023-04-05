@@ -10,7 +10,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "email", length = 50, nullable = false, unique = true)
-    private String email;
+    private String username;
+
     @Column(name = "firstname",  length = 20, nullable = false)
     private String firstName;
     @Column(name = "lastname", length = 20, nullable = false)
@@ -26,7 +27,7 @@ public class User {
                 String email, String password)
     {
         this.id = id;
-        this.email = email;
+        this.username = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -34,33 +35,27 @@ public class User {
 
     public User(User copy) {
         this.id = copy.id;
-        this.email = copy.email;
+        this.username = copy.username;
         this.firstName = copy.firstName;
         this.lastName = copy.lastName;
         this.password = copy.password;
     }
-
     public User() {}
-
-
-    public Long getId() {
-        return id;
-    }
-
+    public Long getId() { return this.id; }
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getUsername() {
-        return email;
+        return this.username;
     }
 
-    public void setUsername(String email) {
-        this.email = email;
+    public void setUsername(String name) {
+        this.username = name;
     }
+
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -68,7 +63,7 @@ public class User {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -76,15 +71,12 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
 
 
 
