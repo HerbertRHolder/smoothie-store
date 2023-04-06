@@ -4,18 +4,15 @@ import com.store.smoothies.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.ArrayList;
+import com.store.smoothies.services.ProductService;
 import java.util.List;
 
 @Controller
 public class Collection {
 
+    ProductService productRepo;
     // field Injection
-    ProductRepository productRepo;
-    public Collection(ProductRepository p){
+    public Collection(ProductService p){
         this.productRepo = p;
     }
 //    @GetMapping("/collection")
