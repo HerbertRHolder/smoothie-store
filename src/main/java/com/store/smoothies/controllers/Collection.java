@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,8 @@ public class Collection {
 //    }
     @GetMapping("/collection")
     public String displayCollectionPage(Model model){
-        model.addAttribute("products", List.of("a","b", "c","d"));
+        List<Product> prd = productRepo.findAll();
+        model.addAttribute("products", prd);
         return "collection";
     }
 }
