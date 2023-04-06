@@ -10,7 +10,10 @@
 
 <main>
     <div th:each="product : ${products}">
-        <p th:text="${product}" />
+        <p th:text="${product.getName()}" />
+        <br>
+        <p th:text="${product.getDesc()}" />
+
     </div>
     <h1>Collection</h1>
 </main>
