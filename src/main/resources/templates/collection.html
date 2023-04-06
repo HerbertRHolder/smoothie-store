@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
+    <title>Login</title>
+</head>
+<body>
+<th:block th:insert="~{partials/header:: header}"></th:block>
+
+
+<main>
+    <div th:each="collect : ${products}">
+        <p th:text="${collect}" />
+    </div>
+    <h1>Collection</h1>
+</main>
+
+<th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+
+</body>
+</html>

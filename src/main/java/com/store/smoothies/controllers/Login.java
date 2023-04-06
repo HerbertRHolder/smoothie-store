@@ -4,20 +4,18 @@ import com.store.smoothies.repositories.UserRepository;
 import com.store.smoothies.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.beans.factory.annotation.Autowired;
 
 
 
 @Controller
-public class LoginController {
+public class Login {
 
     // Declared an instance variable of type UserRepository //
     private final UserRepository userRepository;
@@ -25,7 +23,7 @@ public class LoginController {
 
     // Constructor that accepts a UserRepository object and assigns it to the instance variable to access methods //
     @Autowired
-    public LoginController(UserRepository userRepository,PasswordEncoder encoder ) {
+    public Login(UserRepository userRepository, PasswordEncoder encoder ) {
         this.userRepository = userRepository;
         this.passwordEncoder = encoder;
     }

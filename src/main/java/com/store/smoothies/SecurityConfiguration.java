@@ -15,11 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private UserDetailsLoader usersLoader;
 
-    public SecurityConfiguration(UserDetailsLoader usersLoader) {
-        this.usersLoader = usersLoader;
-    }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -45,18 +43,17 @@ public class SecurityConfiguration {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
-                .deleteCookies("JESSIONID")// append a query string value
+                .deleteCookies("JSESSIONID")
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/register", "/css/**", "/js/**", "/img/**") // anyone can see the home and the ads pages
+                .requestMatchers("/", "/register","/about" ,"/collection", "/collection/products", "/css/**", "/js/**", "/img/**") // changed from .requestMatchers to .antMatchers
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers(
-                        "/checkout" // only authenticated users can access these pages
-
+                .requestMatchers( // changed from .requestMatchers to .antMatchers
+                        "/profile" // only authenticated users can access these pages
                 )
                 .authenticated();
         return http.build();

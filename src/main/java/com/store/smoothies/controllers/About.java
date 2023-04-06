@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class AboutController {
+public class About {
 
         @GetMapping("/about")
         public String displayAboutPage(Model model){

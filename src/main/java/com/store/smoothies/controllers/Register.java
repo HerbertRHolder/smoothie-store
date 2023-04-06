@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
-public class RegisterController {
+public class Register {
 
     private final UserRepository repository;
     private final PasswordEncoder encoder;
 
     // constructor dependency injection
-    public RegisterController(
+    public Register(
             UserRepository userRepository,
             PasswordEncoder passwordEncoder)
     {
