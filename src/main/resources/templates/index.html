@@ -7,25 +7,23 @@
 
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
-
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a href="#" id="product-crumb" class="fs-5"></a>
+    </p>
+</div>
     <main>
         <section class=" hero">
             <div class=" column1">
                 <p class="call-to-action fs-1">PowerUp Your Day !</p>
                 <div class="img-cont">
-
                     <img class="arrow-left " id="arrowL" type="button" th:src="@{icons/arrow-left.svg}" alt="">
-
-                    <a href="#">
+                    <a id="anchor" th:href="@{/collection/1}">
                         <img class="img-fluid" id="currImg" th:src="@{img/orange.png}" alt}="">
                     </a>
-
                     <img class="arrow-right " id="arrowR" type="button" th:src="@{icons/arrow-right.svg}" alt="">
-
-                    <!-- <div class="title-cont">
-                        <p class="fs-1 product-title">Sunshine Mango</p>
-                    </div> -->
-
                 </div>
                 <div class="products-lineup ">
                     <menu type="button">
@@ -46,15 +44,15 @@
             <div class="column2" id="column2">
                 <div id="ingredients" class="crd-paper2 p-4 container-fluid info-cont bg-white d-flex flex-column
                 justify-content-start align-items-start gap-2">
-                    <h2 class="fs-3 text-start">Super Smoothie</h2>
-                    <h2 class="fs-1 text-start mt-2">[Energy}</h2>
-                    <p class="mt-2 fs-4"> <span class="fw-bold">Benefits:</span> Lorem ipsum, or sit amet consectetur
+                    <h2 class="fs-3 text-start" id="smoothie-name">Super Smoothie</h2>
+                    <h2 class="fs-1 text-start mt-2" id="smoothie-benefit">[Energy}</h2>
+                    <p class="mt-2 fs-4" ><span class="fw-bold">Benefits:</span> <span id="benefit-info"> Lorem ipsum, or sit amet consectetur
                         adipisicing elit. A corporis, explicabo dignissimos quo porro, unde inventore suscipit
-                        recusandae eos autem magni ab nemo fugiat enim quos nisi expedita! Enim, omnis.</p>
+                        recusandae eos autem magni ab nemo fugiat enim quos nisi expedita! Enim, omnis.</span></p>
                     <p class="mt-2 fs-4"> <span class="fw-bold">Ingredients:
                         </span>
                     </p>
-                    <ul class="mt-2">
+                    <ul class="mt-2" id="ingredients-items">
                         <li>lmlsdc</li>
                         <li>lmlsdc</li>
                         <li>lmlsdc</li>
@@ -62,13 +60,11 @@
                         <li>lmlsdc</li>
                         <li>lmlsdc</li>
                     </ul>
-
                 </div>
             </div>
         </section>
     </main>
-
-
+<script th:src="@{js/smoothie-ingredients.js}"></script>
 <script th:src="@{js/featuredCollection.js}"></script>
 <th:block th:insert="~{partials/footer:: footer}"></th:block>
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>

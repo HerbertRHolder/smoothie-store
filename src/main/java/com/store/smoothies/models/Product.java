@@ -11,7 +11,7 @@ public class Product {
     private Long id;
     @Column(name = "Product_Name", length = 20, nullable = false, unique = true)
     private String name;
-    @Column(name = "Description", length = 255, nullable = false)
+    @Column(name = "description", length = 255, nullable = false)
     private String desc;
 
     @Column(name = "image_path", length = 255, nullable = false)

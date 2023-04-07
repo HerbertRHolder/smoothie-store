@@ -9,6 +9,13 @@
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a th:href="@{/collection/{id}(id=${product.getId()})}" class="fs-5"><span id="product-crumb" th:text="${product.getName()}"></span></a>
+    </p>
+</div>
 
 <main>
     <h1>Product</h1>

@@ -6,7 +6,13 @@
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
-
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a href="#" class="fs-5"><span id="product-crumb"></span></a>
+    </p>
+</div>
 
 <main>
     <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
@@ -24,17 +30,7 @@
                     <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order</button>
                 </a>
             </div>
-
-
-
-
-
-            <!--        <div class="product-btn">-->
-<!--                <a th:href="@{/collection/{id}(id=${products.get(2).getId()})}">-->
-<!--                    <button type="button" th:id="${products.get(3).getInventory_id().getId()}" class="prd btn btn-danger">Order</button>-->
-<!--                </a>-->
-<!--        </div>-->
-    </div>
+        </div>
 
     </section>
 </main>
@@ -42,16 +38,9 @@
 <th:block th:insert="~{partials/footer:: footer}"></th:block>
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>
 <script>
-    // let prod = document.getElementsByClassName("prd");
-    // prod = Array.from(prod);
-    // prod.forEach(p => {
-    //     console.log(p.id);
-    //     p.addEventListener("click", ()=>{
-    //         location.href = `/collection/${p.id}`
-    //
-    //         // location.href = `/collection/${p.id}`
-    //     })
-    // })
+
+
+
 
 </script>
 </body>

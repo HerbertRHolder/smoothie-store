@@ -1,10 +1,18 @@
 (function () {
     "use strict";
+    // +++++++++++++ Nutrition Information ++++++++++++++++++++++
+    let smoothieName = document.getElementById("smoothie-name");
+    let smoothieBenefit = document.getElementById("smoothie-benefit");
+    let benefitInfo = document.getElementById("benefit-info");
+    let ingredientItems = document.getElementById("ingredients-items");
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     let prev = document.getElementById("arrowL");
     let next = document.getElementById("arrowR");
     let currImg = document.getElementById("currImg");
     let breadCrumb = document.getElementById("product-crumb");
-
+    let featureProduct = document.getElementById("anchor");
+    console.log(featureProduct)
     let index = 0;
     const images = document.querySelectorAll("[data-src]");
     const imgOptions = {};
@@ -24,37 +32,41 @@
 
 
 
-    let smoothieImgs = [
+    let smoothies = [
         {
             src: "img/orange.png",
-            name: "Yah Mongo",
+            name: "Mango",
             view: stateObjs[0],
-            link: "/yah-mongo",
-            ingredients: ""
+            link: "/collection/1",
+            ingredients: mango
+
 
         },
         {
             src: "img/red.png",
             name: "Get the Beets",
             view: stateObjs[1],
-            link: "/Get-the-Beets",
-            ingredients: ""
+            link: "/collection/2",
+            ingredients: getTheBeets
         },
         {
             src: "img/yellow.png",
             name: "Pine Ginger",
             view: stateObjs[2],
-            link: "/pine-ginger",
-            ingredients: ""
+            link: "/collection/4",
+            ingredients: pineGinger
         },
         {
             src: "img/green.png",
             name: "Green Machine",
             view: stateObjs[3],
-            link: "green-machine",
-            ingredients: ""
+            link: "/collection/3",
+            ingredients: greenMachine
         },
     ]; // smoothieImgs
+    breadCrumb.setAttribute("href", "/collection/1");
+    breadCrumb.innerText = `${smoothies[0].name}`;
+
     stateObjs.map((item) => {
         item.element.addEventListener("click", () => {
             // item.element.classList.add("solidImg");
@@ -80,26 +92,35 @@
         index -= 1;
 
         if (index < 0) {
-            index = smoothieImgs.length - 1;
-            smoothieImgs[0].view.element.classList.remove("solidImg");
+            index = smoothies.length - 1;
+            smoothies[0].view.element.classList.remove("solidImg");
         } else {
-            smoothieImgs[index + 1].view.element.classList.remove("solidImg");
+            smoothies[index + 1].view.element.classList.remove("solidImg");
         }
-        currImg.setAttribute("src", `${smoothieImgs[index].src}`);
-        smoothieImgs[index].view.element.classList.add("solidImg");
+        currImg.setAttribute("src", `${smoothies[index].src}`);
+        breadCrumb.setAttribute("href", `${smoothies[index].link}`)
+        featureProduct.setAttribute("href", `${smoothies[index].link}`)
+        breadCrumb.innerText = `${smoothies[index].name}`;
+        benefitInfo.innerText = `${smoothies[index].ingredients}`
+        smoothies[index].view.element.classList.add("solidImg");
     }); // prev listener
+
     next.addEventListener("click", () => {
         index += 1;
-        if (index > smoothieImgs.length - 1) {
+        if (index > smoothies.length - 1) {
             index = 0;
-            smoothieImgs[smoothieImgs.length - 1].view.element.classList.remove(
+            smoothies[smoothies.length - 1].view.element.classList.remove(
                 "solidImg"
             );
         } else {
-            smoothieImgs[index - 1].view.element.classList.remove("solidImg");
+            smoothies[index - 1].view.element.classList.remove("solidImg");
         }
         console.log("next index: ", index);
-        currImg.setAttribute("src", `${smoothieImgs[index].src}`);
-        smoothieImgs[index].view.element.classList.add("solidImg");
+        currImg.setAttribute("src", `${smoothies[index].src}`);
+        breadCrumb.setAttribute("href", `${smoothies[index].link}`)
+        benefitInfo.innerText = `${smoothies[index].ingredients}`
+        featureProduct.setAttribute("href", `${smoothies[index].link}`);
+        breadCrumb.innerText = `${smoothies[index].name}`;
+        smoothies[index].view.element.classList.add("solidImg");
     }); // next listener
 })();

@@ -17,7 +17,7 @@ import java.util.List;
 public class Collection {
 
     private final ProductService  productService;
-    private Product current_product;
+    private Product current_product = null;
 
     // field Injection
     @Autowired
@@ -25,12 +25,10 @@ public class Collection {
         this.productService = p;
     }
     @GetMapping("/collection")
-    public ModelAndView getAllProducts(){
-        ModelAndView mav = new ModelAndView("collection");
-        mav.addObject("products", this.productService.findAll());
-        return mav;
+    public String getAllProducts(Model model){
+        model.addAttribute("products", this.productService.findAll());
+        return "collection";
     }
-
     @GetMapping("/collection/{id}")
     public String showPage(@PathVariable long id, Model model) {
         this.current_product = productService.findById(id);
