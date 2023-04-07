@@ -1,6 +1,7 @@
 package com.store.smoothies.controllers;
 import com.store.smoothies.models.Product;
 import com.store.smoothies.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,35 +16,31 @@ import java.util.List;
 @Controller
 public class Collection {
 
-    ProductService productRepo;
-    // field Injection
-    public Collection(ProductService p){
-        this.productRepo = p;
-    }
-//    @GetMapping("/collection")
-//    public String displayCollectionPage(){
-//        return "collection";
-//    }
+    private final ProductService  productService;
+    private Product current_product;
 
-//    @GetMapping("/collection")
-//    public String displayCollectionPage(Model model){
-//        List<Product> prd = productRepo.findAll();
-//        model.addAttribute("products", prd);
-//        return "collection";
-//    }
+    // field Injection
+    @Autowired
+    public Collection(ProductService p){
+        this.productService = p;
+    }
     @GetMapping("/collection")
     public ModelAndView getAllProducts(){
         ModelAndView mav = new ModelAndView("collection");
-//        List<Product> products = this.productRepo.findAll();
-//        for (int i =0;i< products.size();i++){
-//            products.get(i).getName();
-//        }
-        mav.addObject("products", this.productRepo.findAll());
+        mav.addObject("products", this.productService.findAll());
         return mav;
     }
-    @PostMapping("/collection/product")
-    public String sayHello(@RequestParam( name = "smoothie") String name, Model model) {
-        model.addAttribute("name", productRepo.findByName(name));
-        return "product";
+
+    @GetMapping("/collection/{id}")
+    public String showPage(@PathVariable long id, Model model) {
+        this.current_product = productService.findById(id);
+        return "redirect:/product";
     }
+    @GetMapping("/product")
+    public String sayHello(Model model) {
+        model.addAttribute("product", this.current_product);
+        return "/product";
+    }
+
+
 }

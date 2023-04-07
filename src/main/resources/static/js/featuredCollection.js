@@ -4,6 +4,7 @@
     let next = document.getElementById("arrowR");
     let currImg = document.getElementById("currImg");
     let breadCrumb = document.getElementById("product-crumb");
+
     let index = 0;
     const images = document.querySelectorAll("[data-src]");
     const imgOptions = {};

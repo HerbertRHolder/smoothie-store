@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                       /* Pages that can be viewed without having to log in */
                       .and()
                       .authorizeHttpRequests()
-                      .requestMatchers("/", "/register","/about" ,"/collection", "/collection/product/**","/collection/product", "/css/**", "/js/**", "/img/**","/icons/**") // changed from .requestMatchers to .antMatchers
+                      .requestMatchers("/", "/register","/about" ,"/collection", "/collection/**","/collection/product","/product", "/css/**", "/js/**", "/img/**","/icons/**") // changed from .requestMatchers to .antMatchers
                       .permitAll()
                       /* Pages that require authentication */
                       .and()

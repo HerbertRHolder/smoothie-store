@@ -8,9 +8,9 @@
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
-<h1>Hello</h1>
 <main>
-
+    <p th:text="${name}">name</p>
+    <h1>Hello</h1>
 </main>
 
 <th:block th:insert="~{partials/footer:: footer}"></th:block>

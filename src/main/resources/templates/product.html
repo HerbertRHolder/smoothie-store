@@ -4,13 +4,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
+    <link th:rel="stylesheet" type="text/css" th:href="@{css/reset.css}">
+    <link th:rel="stylesheet" type="text/css" th:href="@{css/style.css}">
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
 <main>
     <h1>Product</h1>
-    <p th:text="${name}"></p>
+    <p th:text="${product.getName()}"></p>
 </main>
 
 
