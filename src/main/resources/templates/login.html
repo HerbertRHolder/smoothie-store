@@ -4,15 +4,16 @@
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
     <title>Login</title>
 </head>
+
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
 
 <main>
-    <form  class="mt-5 w-50" method="post" th:action="@{/login}">
+    <form  class="mt-5 w-50" th:method="post" th:action="@{/login}">
         <div>
             <label for="username" class="form-label">Email</label>
-            <input type="email" name="username" id="username" class="form-control">
+            <input type="text" name="username" id="username" class="form-control">
         </div>
         <div>
             <label for="password" class="form-label">Password</label>

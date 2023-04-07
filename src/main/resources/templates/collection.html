@@ -2,23 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
-    <title>Login</title>
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
-
 <main>
-    <div th:each="product : ${products}">
-        <p th:text="${product.getName()}" />
-        <br>
-        <p th:text="${product.getDesc()}" />
+    <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
 
-    </div>
-    <h1>Collection</h1>
+        <form th:method="post" th:action="@{/collection/product}"
+              th:each="product : ${products}" class="product-card dol">
+
+        <div>
+            <img width="105px" th:src="@{${product.getImg()}}" alt="">
+        </div>
+        <div class="product-title">
+            <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
+            <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
+        </div>
+
+        <div class="product-btn">
+            <input type="text" name="smoothie" th:value="${product.getName()}" class="d-none" />
+            <button class="btn btn-danger">Order</button>
+        </div>
+        </form>
+
+    </section>
 </main>
 
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>
-
 </body>
 </html>

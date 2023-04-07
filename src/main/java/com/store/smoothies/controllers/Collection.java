@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.store.smoothies.services.ProductService;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -37,5 +40,10 @@ public class Collection {
 //        }
         mav.addObject("products", this.productRepo.findAll());
         return mav;
+    }
+    @PostMapping("/collection/product")
+    public String sayHello(@RequestParam( name = "smoothie") String name, Model model) {
+        model.addAttribute("name", productRepo.findByName(name));
+        return "product";
     }
 }

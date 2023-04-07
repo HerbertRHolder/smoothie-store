@@ -1,6 +1,7 @@
 package com.store.smoothies.models;
 
 import jakarta.persistence.*;
+import org.springframework.core.annotation.Order;
 
 @Entity
 @Table(name="product")
@@ -13,9 +14,13 @@ public class Product {
     @Column(name = "Description", length = 255, nullable = false)
     private String desc;
 
+    @Column(name = "image_path", length = 255, nullable = false)
+    private String img;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Inventory_id")
     private Inventory inventory_id;
+
 
     public Long getId() {
         return id;
@@ -47,5 +52,13 @@ public class Product {
 
     public void setInventory_id(Inventory inventory_id) {
         this.inventory_id = inventory_id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

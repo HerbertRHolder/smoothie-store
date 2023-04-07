@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
 </head>
-
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
-<h1>Hello</h1>
 <main>
-
+    <h1>Product</h1>
+    <p th:text="${name}"></p>
 </main>
+
 
 <th:block th:insert="~{partials/footer:: footer}"></th:block>
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>
 </body>
-
 </html>

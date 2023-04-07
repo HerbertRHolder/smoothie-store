@@ -1,9 +1,58 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<th:block th:fragment="footer">
-   <header>
+<th:block th:fragment="header">
+   <header class="">
+      <figure class="logo d-flex
+        justify-content-center
+        gap-2
+        align-items-center">
+         <img width="50px" th:src="@{icons/logo.svg}" alt="">
+         <h1 class="fs-3">PowerUp+</h1>
+      </figure>
+      <nav class="">
 
+         <ul class="fs-3">
+            <a th:href="@{/collection}" class="position-relative">
+               <li class="">Menu</li>
+            </a>
+            <a th:href="@{/about}" class="position-relative">
+               <li class="">Story</li>
+            </a>
+            <a th:href="@{/profile}" th:if="${#authorization.expression('isAuthenticated()')}">
+                 <li>Cart</li>
+            </a>
+
+            <!--            <a th:if="${#authorization.expression('isAuthenticated()')}">-->
+<!--               <form th:action="@{/logout}" method="post">-->
+<!--                  <button>Logout</button>-->
+<!--               </form>-->
+<!--            </a>-->
+
+<!--            <a th:href="@{/logout}" class="position-relative"-->
+<!--               sec:authorize="isAuthenticated()">-->
+<!--                  <li class="">Logout</li>-->
+<!--            </a>-->
+
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="position-relative">
+               <li class="">Login</li>
+            </a>
+
+         </ul>
+
+      </nav>
+      <menu class=" fs-2">
+         <ion-icon name="menu-outline"></ion-icon>
+      </menu>
    </header>
+   <div class="breadcrumbs">
+      <p class="d-flex align-item-center gap-2">
+         <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+         <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+         / <a href="#" class="fs-5"><span id="product-crumb">Sunshine Mango</span></a>
+      </p>
+   </div>
+
+
 </th:block>
 </html>

@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -31,32 +33,71 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                /* Login configuration */
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
-                /* Logout configuration */
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                /* Pages that can be viewed without having to log in */
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers("/", "/register","/about" ,"/collection", "/collection/products", "/css/**", "/js/**", "/img/**") // changed from .requestMatchers to .antMatchers
-                .permitAll()
-                /* Pages that require authentication */
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers( // changed from .requestMatchers to .antMatchers
-                        "/profile" // only authenticated users can access these pages
-                )
-                .authenticated();
-        return http.build();
+       http
+
+        /* Login configuration */
+              .formLogin()
+                      .loginPage("/login")
+                      .defaultSuccessUrl("/") // user's home page, it can be any URL
+                      .permitAll() // Anyone can go to the login page
+                      /* Logout configuration */
+                      .and()
+                      .logout()
+                      .logoutUrl("/logout")
+                      .logoutSuccessUrl("/")
+                      .invalidateHttpSession(true)
+                      .deleteCookies("JSESSIONID")
+                      /* Pages that can be viewed without having to log in */
+                      .and()
+                      .authorizeHttpRequests()
+                      .requestMatchers("/", "/register","/about" ,"/collection", "/collection/product/**","/collection/product", "/css/**", "/js/**", "/img/**","/icons/**") // changed from .requestMatchers to .antMatchers
+                      .permitAll()
+                      /* Pages that require authentication */
+                      .and()
+                      .authorizeHttpRequests()
+                      .requestMatchers( // changed from .requestMatchers to .antMatchers
+                      "/profile" // only authenticated users can access these pages
+                      )
+                     .authenticated();
+                    return http.build();
     }
 
+
+
 }
+
+// http
+//         .authorizeHttpRequests(authorize -> authorize
+//         .anyRequest().authenticated()
+//         )
+//         .formLogin(withDefaults())
+//         .httpBasic(withDefaults());
+//         return http.build();
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
