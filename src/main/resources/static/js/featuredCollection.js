@@ -53,14 +53,14 @@
             src: "img/yellow.png",
             name: "Pine Ginger",
             view: stateObjs[2],
-            link: "/collection/4",
+            link: "/collection/3",
             ingredients: pineGinger
         },
         {
             src: "img/green.png",
             name: "Green Machine",
             view: stateObjs[3],
-            link: "/collection/3",
+            link: "/collection/4",
             ingredients: greenMachine
         },
     ]; // smoothieImgs

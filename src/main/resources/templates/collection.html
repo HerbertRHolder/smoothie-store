@@ -13,11 +13,17 @@
         / <a href="#" class="fs-5"><span id="product-crumb"></span></a>
     </p>
 </div>
-
+<style>
+    .img-cont_collection{
+        width: fit-content;
+        height: 250px;
+    }
+</style>
 <main>
     <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
-        <div th:each="product : ${products}" class="product-card dol">
-            <div>
+
+        <div th:each="product : ${products}" class="product-card pb-4 ">
+            <div class="img-cont_collection">
                 <img width="105px" th:src="@{${product.getImg()}}" alt="">
             </div>
             <div class="product-title">
@@ -25,7 +31,7 @@
                 <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
             </div>
 
-            <div class="product-btn">
+            <div class="product-btn mt-5">
                 <a th:href="@{/collection/{id}(id=${product.getId()})}">
                     <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order</button>
                 </a>

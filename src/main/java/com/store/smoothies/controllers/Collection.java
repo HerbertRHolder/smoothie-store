@@ -24,11 +24,15 @@ public class Collection {
     public Collection(ProductService p){
         this.productService = p;
     }
+
+
     @GetMapping("/collection")
     public String getAllProducts(Model model){
         model.addAttribute("products", this.productService.findAll());
         return "collection";
     }
+
+
     @GetMapping("/collection/{id}")
     public String showPage(@PathVariable long id, Model model) {
         this.current_product = productService.findById(id);
