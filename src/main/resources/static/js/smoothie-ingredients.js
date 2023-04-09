@@ -1,6 +1,6 @@
 let mango = `Whip up this refreshing mango smoothie recipe for an instant energy boost! Each serving delivers nutrient-rich fruits, fiber, protein, and probiotics. This is a cool, refreshing, and creamy tropical-inspired drink.`;
 
-let getTheBeets = `Beet juice may help lower your blood pressure.Parsley, apple, ginger, and lemon are all great foodsfull of nutrition. I’ve included cucumber in this beetroot juice recipe to help dilute the strong beet flavor,and to add a neutral balancing effect to the overall juice.`
+let getTheBeets = `Beet juice may help lower your blood pressure.Parsley, apple, ginger, and lemon are all great foods full of nutrition. We’ve included cucumber in this beetroot juice recipe to help dilute the strong beet flavor, and to add a neutral balancing effect to the overall juice.`
 
 let greenMachine = `Green juice is an extremely rich source of healthy fibers, vitamins, minerals,antioxidants, phytonutrients… the list goes on. It also contains active plant enzymes that your body needs.`
 

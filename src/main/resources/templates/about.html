@@ -4,6 +4,13 @@
 <head>
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
 </head>
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/about}" class="fs-5">Story</a>
+<!--        / <a th:href="@{/}" class="fs-5"><span id="product-crumb"></span></a>-->
+    </p>
+</div>
 
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
