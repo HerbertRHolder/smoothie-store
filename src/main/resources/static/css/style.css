@@ -77,6 +77,7 @@ header {
 .login-form button{
     font-family: "Bebas Neue", sans-serif;
 }
+
 header nav {
     width: fit-content;
     height: 100%;
@@ -232,6 +233,9 @@ button {
     .img-cont_product {
        background: none !important;
         color: #000000 !important;
+    }
+    .about-card{
+        width: 90% !important;
     }
 }
 @media screen and (max-width: 798px) {

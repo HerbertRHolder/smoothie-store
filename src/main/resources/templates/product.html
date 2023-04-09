@@ -31,6 +31,9 @@
 
         <div class="product-btn">
             <a th:href="@{/collection/{id}(id=${product.getId()})}">
+                <form th:action="@{/purchase}" th:method="POST">
+
+                </form>
                 <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order</button>
             </a>
         </div>

@@ -2,6 +2,9 @@ package com.store.smoothies.models;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name="user")
@@ -20,6 +23,8 @@ public class User {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
+    @ManyToMany
+    Set<Product> productSet = new HashSet<>();
 
 
     public User(Long id, String username,
@@ -78,6 +83,11 @@ public class User {
         this.password = password;
     }
 
+    public Set<Product> getProductSet() {
+        return this.productSet;
+    }
 
-
+    public void setProductSet(Set<Product> productSet) {
+        this.productSet = productSet;
+    }
 }

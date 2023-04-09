@@ -3,6 +3,9 @@ package com.store.smoothies.models;
 import jakarta.persistence.*;
 import org.springframework.core.annotation.Order;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="product")
 public class Product {
@@ -16,6 +19,10 @@ public class Product {
 
     @Column(name = "image_path", length = 255, nullable = false)
     private String img;
+
+    @ManyToMany(mappedBy = "productSet")
+    Set<User> users = new HashSet<>();
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Inventory_id")
@@ -60,5 +67,13 @@ public class Product {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Set<User> getUsers() {
+        return this.users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
