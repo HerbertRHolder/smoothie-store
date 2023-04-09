@@ -17,9 +17,24 @@
     </p>
 </div>
 
-<main>
-    <h1>Product</h1>
-    <p th:text="${product.getName()}"></p>
+<main class="pt-5">
+<!--    <h1>Product</h1>-->
+<!--    <p th:text="${product.getName()}"></p>-->
+    <div class="img-cont_product">
+        <div class="">
+            <img width="105px" th:src="@{${product.getImg()}}" alt="">
+        </div>
+        <div class="product-title">
+            <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
+            <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
+        </div>
+
+        <div class="product-btn">
+            <a th:href="@{/collection/{id}(id=${product.getId()})}">
+                <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order</button>
+            </a>
+        </div>
+    </div>
 </main>
 
 

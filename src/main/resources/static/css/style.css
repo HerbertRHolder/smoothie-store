@@ -57,6 +57,26 @@ header {
     background-color: transparent;
     display: grid;
 }
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-image: url("../img/texture2.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    /*font-family: "Bebas Neue", cursive;*/
+    font-family: "Satisfy", Arial, sans-serif;
+    letter-spacing: calc(3px / 2);
+    font-size: 1.3rem;
+}
+.login-form button{
+    font-family: "Bebas Neue", sans-serif;
+}
 header nav {
     width: fit-content;
     height: 100%;
@@ -209,6 +229,10 @@ button {
     .products-lineup menu {
         display: none !important;
     }
+    .img-cont_product {
+       background: none !important;
+        color: #000000 !important;
+    }
 }
 @media screen and (max-width: 798px) {
     /* … */
@@ -291,6 +315,25 @@ button {
     color: #ffffff;
     /*border: solid 1px #bc6c25;*/
     /*background: rgba(188, 108, 37, 0.6);*/
+}
+.img-cont_collection{
+    width: fit-content;
+    height: 250px;
+}
+.img-cont_product{
+    background: url("../img/wood.jpeg") no-repeat center;
+    background-size: cover;
+    color: #ffffff;
+    width: 260px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+
 }
  .product-card div img{
      height: 80%;
