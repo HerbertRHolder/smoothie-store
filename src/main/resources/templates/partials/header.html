@@ -26,8 +26,14 @@
             <a th:href="@{/profile}" th:if="${#authorization.expression('isAuthenticated()')}">
                  <li>Orders</li>
             </a>
-            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="position-relative">
-               <li class="">Login</li>
+
+            <a  th:href="@{/login}" sec:authorize="!isAuthenticated()" class="position-relative d-flex">
+
+                  <li class="">Login</li>
+<!--               <a th:href="@{/register}">-->
+<!--                  <li class="fs-4">Sign up!</li>-->
+<!--               </a>-->
+
             </a>
 
          </ul>

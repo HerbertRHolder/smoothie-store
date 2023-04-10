@@ -8,8 +8,11 @@
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
 
-<main>
-    <form  class="mt-5 w-50" method="POST" th:action="@{/register}" th:object="${user}">
+<main class=" justify-content-start p-3">
+    <form  class="mt-5 login-form w-75" method="POST" th:action="@{/register}" th:object="${user}">
+        <div class="w-100 ps-4  d-flex justify-content-start">
+            <span><a  class="text-black" th:href="@{/login}">Login</a></span>
+        </div>
         <div>
             <label for="username" class="form-label">Email</label>
             <input type="email" name="username" id="username" th:field="*{username}" class="form-control">
@@ -26,9 +29,12 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" name="password" id="password" th:field="*{password}" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-danger">Submit</button>
     </form>
+    <img class="img-fluid" width="300px" th:src="@{img/blender-org.png}" alt="">
 </main>
+
+
 
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>
 

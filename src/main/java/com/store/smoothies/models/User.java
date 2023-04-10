@@ -1,7 +1,7 @@
 package com.store.smoothies.models;
 
 import jakarta.persistence.*;
-
+import com.stripe.model.Customer;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,9 +20,10 @@ public class User {
     @Column(name = "lastname", length = 20, nullable = false)
     private String lastName;
 
+    @Column(name = "Customer_id", nullable = false, length = 255)
+    private String customer_id;
     @Column(name = "password", nullable = false, length = 255)
     private String password;
-
     @ManyToMany
     Set<Product> productSet = new HashSet<>();
 
@@ -89,5 +90,13 @@ public class User {
 
     public void setProductSet(Set<Product> productSet) {
         this.productSet = productSet;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 }

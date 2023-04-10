@@ -14,6 +14,9 @@
 .btn-text::after{
     content: "Order Now" !important;
 }
+form div input {
+    font-family: "Bebas Neue", sans-serif !important;
+}
 .prime {
     background-color: #ffffff;
 }
@@ -75,6 +78,7 @@ header {
     font-family: "Satisfy", Arial, sans-serif;
     letter-spacing: calc(3px / 2);
     font-size: 1.3rem;
+    border-radius: 1rem;
 }
 .login-form button{
     font-family: "Bebas Neue", sans-serif;
@@ -93,7 +97,7 @@ header nav {
 }
 header nav ul {
     display: flex;
-    max-width: fit-content;
+    width: 500px;
     height: 100%;
     justify-content: end;
     align-items: center;
@@ -103,7 +107,7 @@ header nav ul {
 header nav ul a {
     height: 100%;
 }
-header nav ul a li {
+header nav ul div a li, header nav ul a li {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -115,12 +119,16 @@ header nav ul a li {
     font-family: "Satisfy", cursive;
     transition: all 1s;
 }
-header nav ul a li:hover {
+header nav ul div a li:hover,header nav ul a li:hover {
     background-image: url("../icons/underline.png");
     background-position: 0px 60px;
     background-size: contain;
     background-repeat: no-repeat;
+    /*outline: 1px dashed red;*/
 }
+/*header nav ul div a li{*/
+/*    width: 200px;*/
+/*}*/
 header nav ul li, header nav ul a, header nav ul a:visited, header nav ul a:hover {
     text-decoration: none;
     list-style: none;

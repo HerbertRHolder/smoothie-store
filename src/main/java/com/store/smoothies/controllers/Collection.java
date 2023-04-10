@@ -1,13 +1,16 @@
 package com.store.smoothies.controllers;
 
 import com.store.smoothies.data.ChargeRequest;
+import com.store.smoothies.models.User;
 import com.store.smoothies.services.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
+import com.stripe.model.Customer;
 
 import com.store.smoothies.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +21,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller
 public class Collection {
     private Number priceToUse = null;
     private final ProductService  productService;
+    private Customer customer;
     private Product current_product = null;
 
     @Value("${STRIPE_API_PKEY}")
@@ -91,6 +97,12 @@ public class Collection {
         model.addAttribute("status", charge.getStatus());
         model.addAttribute("chargeId", charge.getId());
         model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Map<String, String> metadata = new HashMap<>();
+        String user = currentUser.getId().toString();
+        metadata.put("user_id", user);
+
         return "paymentStatus";
     }
 
