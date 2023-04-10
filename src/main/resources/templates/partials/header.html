@@ -3,13 +3,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="header">
    <header class="">
-      <figure class="logo d-flex
+      <a th:href="@{/}">
+         <figure class="logo d-flex
         justify-content-center
         gap-2
         align-items-center">
-         <img width="50px" th:src="@{icons/logo.svg}" alt="">
-         <h1 class="fs-3">PowerUp+</h1>
-      </figure>
+
+            <img width="50px" th:src="@{icons/logo.svg}" alt="">
+            <h1 class="fs-3">PowerUp+</h1>
+         </figure>
+      </a>
+
       <nav class="">
 
          <ul class="fs-3">
@@ -22,18 +26,6 @@
             <a th:href="@{/profile}" th:if="${#authorization.expression('isAuthenticated()')}">
                  <li>Orders</li>
             </a>
-
-            <!--            <a th:if="${#authorization.expression('isAuthenticated()')}">-->
-<!--               <form th:action="@{/logout}" method="post">-->
-<!--                  <button>Logout</button>-->
-<!--               </form>-->
-<!--            </a>-->
-
-<!--            <a th:href="@{/logout}" class="position-relative"-->
-<!--               sec:authorize="isAuthenticated()">-->
-<!--                  <li class="">Logout</li>-->
-<!--            </a>-->
-
             <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="position-relative">
                <li class="">Login</li>
             </a>

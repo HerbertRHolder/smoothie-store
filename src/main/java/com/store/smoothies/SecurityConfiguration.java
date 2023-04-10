@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                       .and()
                       .authorizeHttpRequests()
                       .requestMatchers( // changed from .requestMatchers to .antMatchers
-                      "/profile","/product" // only authenticated users can access these pages
+                      "/profile","/product","/logout" // only authenticated users can access these pages
                       )
                      .authenticated();
                     return http.build();

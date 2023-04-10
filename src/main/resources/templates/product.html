@@ -28,18 +28,38 @@
             <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
             <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
             <h1 class="fs-5 text-center" th:text="'$'+ ${product.getPrice()}"></h1>
-
         </div>
 
         <div class="product-btn">
-            <a th:href="@{/collection/{id}(id=${product.getId()})}">
-                <form th:action="@{/purchase}" th:method="POST">
-
-                </form>
-                <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order</button>
-            </a>
+            <form th:action='@{/charge}' class="mb-20" th:method='POST' id='checkout-form'>
+                <input type='hidden' th:value='${amount}' name='amount' />
+                <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+                <script
+                        src='https://checkout.stripe.com/checkout.js'
+                        class='stripe-button'
+                        th:attr='data-key=${stripePublicKey},
+                data-amount=${amount},
+                data-currency=${currency}'
+                        data-name='PowerUp+'
+                        data-description='Checkout'
+                        data-image='img/orange.png'
+                        data-locale='auto'
+                        data-zip-code='false'>
+                </script>
+            </form>
+<!--            <a th:href="@{/collection/{id}(id=${product.getId()})}">-->
+<!--                <form th:action="@{/purchase}" th:method="POST">-->
+<!--                    <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Confirm Purchase</button>-->
+<!--                </form>-->
+<!--            </a>-->
         </div>
     </div>
+
+
+
+
+
+
 </main>
 
 

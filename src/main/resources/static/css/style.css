@@ -11,7 +11,9 @@
     --card-padding_mob:3px;
     --section-h_mob: 900px;
 }
-
+.btn-text::after{
+    content: "Order Now" !important;
+}
 .prime {
     background-color: #ffffff;
 }
@@ -124,16 +126,18 @@ header nav ul li, header nav ul a, header nav ul a:visited, header nav ul a:hove
     list-style: none;
     color: #000000;
 }
-header .logo {
+header a {
     margin: 0;
     margin-left: 2rem;
     height: fit-content;
     display: flex;
     justify-self: flex-start;
     align-self: center;
+    text-decoration: none;
+    color: #4D4D4D;
 }
-header .logo h1 {
-    font-family: "Bebas Neue", cursive;
+header a .logo h1 {
+    font-family: "Satisfy", cursive;
 }
 header menu {
     width: 50px;
@@ -191,7 +195,7 @@ footer {
     padding-top: 2rem;
 }
 .footer-links_cont{
-    border-top: solid 1px #4D4D4D ;
+    /*border-top: solid 1px #4D4D4D ;*/
     margin-top: 2rem;
     padding-top: 2rem;
     display: flex;
@@ -202,6 +206,10 @@ footer {
 }
 .footer-links_cont a{
     color: #4D4D4D;
+}
+.footer-links_cont a form button{
+    color: #4D4D4D;
+    text-decoration: underline;
 }
 
 
