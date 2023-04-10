@@ -17,6 +17,9 @@ public class Product {
     @Column(name = "description", length = 255, nullable = false)
     private String desc;
 
+    @Column(name = "Price", length = 10, nullable = false)
+    private double price;
+
     @Column(name = "image_path", length = 255, nullable = false)
     private String img;
 
@@ -75,5 +78,13 @@ public class Product {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

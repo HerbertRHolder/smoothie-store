@@ -27,7 +27,7 @@
         <div class="product-title">
             <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
             <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
-            <h1 class="fs-5 text-center">$3.69</h1>
+            <h1 class="fs-5 text-center" th:text="'$'+ ${product.getPrice()}"></h1>
 
         </div>
 

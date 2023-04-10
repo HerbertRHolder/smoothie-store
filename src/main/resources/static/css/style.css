@@ -323,6 +323,7 @@ button {
 .product-card {
     width: 250px;
     height: 400px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;

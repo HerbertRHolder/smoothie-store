@@ -22,16 +22,17 @@
 <main>
     <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
 
-        <div th:each="product : ${products}" class="product-card pb-4 ">
+        <div th:each="product : ${products}" class="product-card">
             <div class="img-cont_collection">
                 <img width="105px" th:src="@{${product.getImg()}}" alt="">
             </div>
             <div class="product-title">
                 <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
                 <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
+                <h1 class="fs-5 text-center" th:text="'$'+ ${product.getPrice()}"></h1>
             </div>
 
-            <div class="product-btn mt-5">
+            <div class="product-btn">
                 <a th:href="@{/collection/{id}(id=${product.getId()})}">
                     <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">View More</button>
                 </a>
