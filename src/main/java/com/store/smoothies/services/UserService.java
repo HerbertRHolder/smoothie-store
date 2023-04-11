@@ -1,29 +1,35 @@
-//package com.store.smoothies.services;
-//
-//import com.store.smoothies.models.Product;
-//import com.store.smoothies.models.User;
-//import com.store.smoothies.repositories.UserRepository;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.List;
-//
-//@Service
-//public class UserService {
-//    private final UserRepository repo;
-//
-//    public UserService(UserRepository u) {
-//        this.repo = u;
-//    }
-//
-//    public User findById(Long id) {
-//        return repo.findById(id).orElse(null);
-//    }
-//
-//    public List<User> findAll() {
-//        return repo.findAll();
-//    }
-//
-//    public User findByName(String name) {
-//        return this.repo.findByName(name);
-//    }
-//}
+package com.store.smoothies.services;
+
+import com.store.smoothies.models.User;
+import com.store.smoothies.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class UserService implements UserInterface {
+
+    private final UserRepository repo;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository ur,PasswordEncoder pe) {
+        this.repo = ur;
+        this.passwordEncoder = pe;
+    }
+
+    public Optional<User> findById(Long id){
+        return this.repo.findById(id);
+    }
+    public List<User> findAll(){
+        return repo.findAll();
+    }
+
+    @Override
+    public User findByName(String name) {
+        return this.repo.findByUsername(name);
+    }
+
+
+}
