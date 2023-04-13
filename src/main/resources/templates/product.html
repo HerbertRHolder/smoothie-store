@@ -31,8 +31,10 @@
         </div>
 
         <div class="product-btn">
-            <form th:action='@{/charge}' class="mb-20" th:method='POST' id='checkout-form'>
+            <form th:action='@{/purchase}' class="mb-20" th:method='POST' id='checkout-form'>
                 <input type='hidden' th:value='${amount}' name='amount' />
+                <input type='hidden' th:value='${product.getId()}' name='id' />
+
                 <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
                 <script
                         src='https://checkout.stripe.com/checkout.js'

@@ -23,15 +23,21 @@ public class Product {
     @Column(name = "image_path", length = 255, nullable = false)
     private String img;
 
-    @ManyToMany(mappedBy = "productSet")
-    Set<User> users = new HashSet<>();
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Inventory_id")
     private Inventory inventory_id;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_product",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> users = new HashSet<>();
 
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Long getId() {
         return id;
     }
