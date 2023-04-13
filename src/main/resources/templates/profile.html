@@ -10,12 +10,39 @@
 <div class="breadcrumbs">
     <p class="d-flex align-item-center gap-2">
         <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
-        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/profile}" class="fs-5">Orders</a>
-        /
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a th:href="@{/profile}" class="fs-5"><span id="product-crumb">My Orders</span></a>
     </p>
 </div>
 <main>
+    <h1 class="fs-2" style="font-family: Satisfy,sans-serif">My Orders</h1>
 
+    <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
+
+<!--        <div th:each="product : ${products}" class="img-cont_product">-->
+<!--            <div class="img-cont_collection">-->
+<!--                <img width="105px" th:src="@{${product.getProduct().getImg()}}" alt="">-->
+<!--            </div>-->
+<!--            <div class="product-title">-->
+<!--                <h2 class="fs-6 text-center" th:text="${product.getProduct().getName()}">Super smoothie</h2>-->
+<!--                <h1 class="fs-3 text-center" th:text="${product.getProduct().getDesc()}">Energy</h1>-->
+<!--                <h1 class="fs-5 text-center" th:text="'$'+ ${product.getProduct().getPrice()}"></h1>-->
+<!--            </div>-->
+
+<!--        </div>-->
+        <div th:each="product : ${products}" class="img-cont_product">
+            <div class="">
+                <img width="105px" th:src="@{${product.getProduct().getImg()}}" alt="">
+            </div>
+            <div class="product-title">
+                <h2 class="fs-6 text-center" th:text="${product.getProduct().getName()}">Super smoothie</h2>
+                <h1 class="fs-3 text-center" th:text="${product.product.getDesc()}">Energy</h1>
+                <h1 class="fs-5 text-center" th:text="'$'+ ${product.getProduct().getPrice()}"></h1>
+            </div>
+
+        </div>
+
+    </section>
 </main>
 
 <th:block th:insert="~{partials/footer:: footer}"></th:block>

@@ -50,13 +50,13 @@ public class SecurityConfiguration {
                       /* Pages that can be viewed without having to log in */
                       .and()
                       .authorizeHttpRequests()
-                      .requestMatchers("/", "/register","/about" ,"/collection", "/collection/**", "/css/**", "/js/**", "/img/**","/icons/**","https://www.linkedin.com/in/herbertrholder/") // changed from .requestMatchers to .antMatchers
+                      .requestMatchers("/","/fruit", "/register","/about" ,"/collection", "/collection/**", "/css/**", "/js/**", "/img/**","/icons/**","https://www.linkedin.com/in/herbertrholder/") // changed from .requestMatchers to .antMatchers
                       .permitAll()
                       /* Pages that require authentication */
                       .and()
                       .authorizeHttpRequests()
                       .requestMatchers( // changed from .requestMatchers to .antMatchers
-                      "/profile","/product","/logout" // only authenticated users can access these pages
+                      "/profile","/product","/logout","/purchase","/success" // only authenticated users can access these pages
                       )
                      .authenticated();
                     return http.build();

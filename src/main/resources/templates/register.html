@@ -6,7 +6,9 @@
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
-
+<div th:if="${error}" class="alert alert-danger">
+    <p th:text="${error}"></p>
+</div>
 
 <main class=" justify-content-start p-3">
     <form  class="mt-5 login-form w-75" method="POST" th:action="@{/register}" th:object="${user}">

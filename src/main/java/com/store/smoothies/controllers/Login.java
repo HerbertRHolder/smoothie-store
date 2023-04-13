@@ -3,7 +3,9 @@ package com.store.smoothies.controllers;
 import com.store.smoothies.repositories.UserRepository;
 import com.store.smoothies.models.User;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -28,26 +30,7 @@ public class Login {
         this.passwordEncoder = encoder;
     }
     @GetMapping("/login")
-        public String displayLoginPage(){ return "login";}
-
-//    @GetMapping("/logout")
-//    public String displayHome()
-//
-//    { return "index";}
-    @PostMapping("/login")
-    public String login(@ModelAttribute("user") User user, Model model) {
-        User existingUser = userRepository.findByUsername(user.getUsername());
-        if (existingUser == null) {
-            model.addAttribute("error", "Invalid email or password");
-            return "login";
-        }
-        if (!this.passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-            model.addAttribute("error", "Invalid email or password");
-            return "login";
-        }
-        return "redirect:/";
-
-    }
+    public String displayLoginPage(){ return "login";}
 
 
 

@@ -1,6 +1,5 @@
 package com.store.smoothies.services;
 
-
 import com.store.smoothies.data.ChargeRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.AuthenticationException;
@@ -18,7 +17,6 @@ import java.util.Map;
 @Service
 public class StripeService {
 
-
     @Value("${STRIPE_API_SECRET}")
     private String secretKey;
 
@@ -26,7 +24,6 @@ public class StripeService {
     public void init() {
         Stripe.apiKey = secretKey;
     }
-
     public Charge charge(ChargeRequest chargeRequest)
             throws StripeException {
         Map<String, Object> chargeParams = new HashMap<>();

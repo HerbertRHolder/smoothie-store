@@ -46,19 +46,21 @@ public class Register {
         }
         // Password validation
         String password = user.getPassword();
-        if (password == null || password.length() < 4) {
+        if (password == null || password.length() < 7) {
             model.addAttribute("error", "Password must be at least 8 characters long and must contain at least one symbol");
+            return "register";
+        } else if (!password.matches(".*[!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?].*")) {
+            model.addAttribute("error", "Password must contain at least one symbol");
             return "register";
         }
         String encodedPassword = this.encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         Map<String, Object> meta = new HashMap<>();
-        meta.put("first_name", user.getFirstName());
-        meta.put("last_name",user.getLastName());
+        meta.put("name", user.getFirstName() + " " + user.getLastName());
         meta.put( "email",user.getUsername());
 
-
         Customer c = Customer.create(meta);
+        System.out.println(c.getId() + " : TYPE Customer c.getId");
         user.setCustomer_id(c.getId());
 
         this.repository.save(user);

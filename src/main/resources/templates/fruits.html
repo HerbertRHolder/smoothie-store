@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
 </head>
+
 <body>
-$END$
+<th:block th:insert="~{partials/header:: header}"></th:block>
+
+<main>
+
+  <form>
+    <label for="file-upload">Drag and drop a file here:</label>
+    <input type="file" id="file-upload" />
+  </form>
+
+
+
+</main>
+
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
+<th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+<script>
+  const fileUploadInput = document.getElementById("file-upload");
+
+  // Add dragover listener to allow dragging over the input element
+  fileUploadInput.addEventListener("dragover", (event) => {
+    event.preventDefault(); // Prevent default behavior (open as link for some elements)
+  });
+
+  // Add drop listener to handle dropped files
+  fileUploadInput.addEventListener("drop", (event) => {
+    event.preventDefault(); // Prevent default behavior (open as link for some elements)
+    const files = event.dataTransfer.files; // Get the dropped files
+    fileUploadInput.files = files; // Set the input's files property to the dropped files
+  });
+</script>
 </body>
+
 </html>
