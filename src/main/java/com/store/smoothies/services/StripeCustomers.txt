@@ -1,0 +1,28 @@
+//package com.store.smoothies.services;
+//
+//import com.stripe.Stripe;
+//import com.stripe.exception.StripeException;
+//import com.stripe.model.Customer;
+//import java.util.HashMap;
+//import java.util.Map;
+//
+//public class StripeCustomers {
+//    public static void main(String[] args) throws StripeException {
+//        Stripe.apiKey = "sk_test_..."; // Set your API key here
+//
+//        // Set the user ID and customer ID
+//        String userId = "123";
+//        String customerId = "cus_...";
+//
+//        // Set the metadata for the customer
+//        Map<String, String> metadata = new HashMap<>();
+//        metadata.put("user_id", userId);
+//
+//        // Retrieve the customer from Stripe
+//        Customer customer = Customer.retrieve(customerId);
+//
+//        // Update the metadata for the customer
+//        customer.setMetadata(metadata);
+//        customer.save();
+//    }
+//}

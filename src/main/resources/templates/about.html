@@ -1,1 +1,39 @@
-<h1>About</h1>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
+</head>
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/about}" class="fs-5">Story</a>
+<!--        / <a th:href="@{/}" class="fs-5"><span id="product-crumb"></span></a>-->
+    </p>
+</div>
+
+<body>
+<th:block th:insert="~{partials/header:: header}"></th:block>
+
+<main>
+    <h1 class="fs-1 text-center" style="font-family: 'Satisfy', sans-serif">Serving Smoothies Since The 2010s</h1>
+    <div class="about-card crd-paper2 w-75 bg-white d-flex flex-column p-4 mb-5">
+        <p class="fs-2">
+            Fantastic flavor is always in season and nothing beats
+            feeling your best. For nearly 10 years, PowerUp has brought
+            the right, delicious ingredients to create whirl'd famous
+            flavor served by friendly staff. Try our fuel good food from plant-based
+            smoothies, delicious bowls with fresh fruit toppings,
+            to protein-packed food and on-the-go snacks.
+            Getting the PowerUp you love is now easier
+            and faster with online ordering.
+        </p>
+
+    </div>
+</main>
+
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
+<th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+</body>
+
+</html>

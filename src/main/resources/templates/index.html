@@ -1,1 +1,71 @@
-<h1>Home</h1>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
+</head>
+
+<body>
+<th:block th:insert="~{partials/header:: header}"></th:block>
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a href="#" id="product-crumb" class="fs-5"></a>
+    </p>
+</div>
+    <main>
+        <section class=" hero">
+            <div class=" column1">
+                <p class="call-to-action fs-1">PowerUp Your Day !</p>
+                <div class="img-cont">
+                    <img class="arrow-left " id="arrowL" type="button" th:src="@{icons/arrow-left.svg}" alt="">
+                    <a id="anchor" th:href="@{/collection/1}">
+                        <img class="img-fluid" id="currImg" th:src="@{img/orange.png}" alt}="">
+                    </a>
+                    <img class="arrow-right " id="arrowR" type="button" th:src="@{icons/arrow-right.svg}" alt="">
+                </div>
+                <div class="products-lineup ">
+                    <menu type="button">
+                        <a th:href="@{/collection}" class="text-black">
+                            <ion-icon class="fs-1" name="apps-sharp"></ion-icon>
+                        </a>
+                    </menu>
+                    <div class="lineup ">
+
+                        <img class="product-view solidImg" th:src="@{img/orange.png}" alt="">
+                        <img class="product-view" th:src="@{img/red.png}" alt="">
+                        <img class="product-view" th:src="@{img/yellow.png}" alt="">
+                        <img class="product-view" th:src="@{img/green.png}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="column2" id="column2">
+                <div id="ingredients" class="crd-paper2 p-4 container-fluid info-cont bg-white d-flex flex-column
+                justify-content-start align-items-start gap-2">
+                    <h2 class="fs-3 text-start" id="smoothie-name">Mango</h2>
+                    <h2 class="fs-1 text-start mt-2" id="smoothie-benefit">Stamina</h2>
+                    <p class="mt-2 fs-4" ><span class="fw-bold">Benefits:</span> <span id="benefit-info">Whip up this refreshing mango smoothie recipe for an instant energy boost! Each serving delivers nutrient-rich fruits, fiber, protein, and probiotics. This is a cool, refreshing, and creamy tropical-inspired drink.
+</span></p>
+                    <p class="mt-2 fs-4"> <span class="fw-bold">Ingredients:
+                        </span>
+                    </p>
+                    <ul class="mt-2" id="ingredients-items">
+                        <li>Mango</li>
+                        <li>Coconut milk</li>
+                        <li>Protein Powder</li>
+                        <li>Papaya</li>
+                        <li>Bananas</li>
+                        <li>Orange juice</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+<script th:src="@{js/smoothie-ingredients.js}"></script>
+<script th:src="@{js/featuredCollection.js}"></script>
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
+<th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+</body>
+</html>

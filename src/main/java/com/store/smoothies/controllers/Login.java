@@ -30,6 +30,10 @@ public class Login {
     @GetMapping("/login")
         public String displayLoginPage(){ return "login";}
 
+//    @GetMapping("/logout")
+//    public String displayHome()
+//
+//    { return "index";}
     @PostMapping("/login")
     public String login(@ModelAttribute("user") User user, Model model) {
         User existingUser = userRepository.findByUsername(user.getUsername());

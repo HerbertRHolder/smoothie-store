@@ -4,23 +4,32 @@
     <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
     <title>Login</title>
 </head>
+
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
 
+<main class=" justify-content-start p-3">
 
-<main>
-    <form  class="mt-5 w-50" method="post" th:action="@{/login}">
-        <div>
-            <label for="username" class="form-label">Email</label>
-            <input type="email" name="username" id="username" class="form-control">
-        </div>
-        <div>
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" id="password"  class="form-control">
-        </div>
+    <h1 class="fs-1 text-center" style="font-family: Satisfy,sans-serif">Please Login To Order Smoothies!</h1>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <form  class="mt-5 login-form w-75" th:method="post" th:action="@{/login}">
+            <div class="w-100 ps-4  d-flex justify-content-start">
+                <span><a  class="text-black" th:href="@{/register}">Sign Up !</a></span>
+            </div>
+            <div>
+                <label for="username" class="form-label">Email</label>
+                <input type="text" name="username" id="username" class="form-control">
+            </div>
+            <div>
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password"  class="form-control">
+                <div id="emailHelp" class="form-text">Not a member? </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+    <img class="img-fluid" width="300px" th:src="@{img/blender-org.png}" alt="">
 </main>
 
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>

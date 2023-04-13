@@ -6,19 +6,50 @@
 </head>
 <body>
 <th:block th:insert="~{partials/header:: header}"></th:block>
-
-
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a href="#" class="fs-5"><span id="product-crumb"></span></a>
+    </p>
+</div>
+<style>
+    .img-cont_collection{
+        width: fit-content;
+        height: 250px;
+    }
+</style>
 <main>
-    <div th:each="product : ${products}">
-        <p th:text="${product.getName()}" />
-        <br>
-        <p th:text="${product.getDesc()}" />
+    <section class=" d-flex flex-wrap gap-5 justify-content-center pt-5">
 
-    </div>
-    <h1>Collection</h1>
+        <div th:each="product : ${products}" class="product-card">
+            <div class="img-cont_collection">
+                <img width="105px" th:src="@{${product.getImg()}}" alt="">
+            </div>
+            <div class="product-title">
+                <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
+                <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
+                <h1 class="fs-5 text-center" th:text="'$'+ ${product.getPrice()}"></h1>
+            </div>
+
+            <div class="product-btn">
+                <a th:href="@{/collection/{id}(id=${product.getId()})}">
+                    <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Order Now</button>
+                </a>
+            </div>
+        </div>
+
+    </section>
 </main>
 
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
 <th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+<script>
 
+
+
+
+</script>
 </body>
+
 </html>

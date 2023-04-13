@@ -2,7 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="footer">
     <footer class="">
-        footer
+        <img width="50px" th:src="@{icons/logo.svg}" alt="">
+        <div class="d-flex footer-links_cont">
+            <a th:href="@{https://www.linkedin.com/in/herbertrholder/}" class="position-relative">
+                <h2 class="fs-2">Our Founder!</h2>
+            </a>
+            <a sec:authorize="isAuthenticated()" class="position-relative">
+                <form th:action="@{/logout}" method="POST">
+                     <button type="submit" class="fs-2">Logout</button>
+                </form>
+            </a>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="position-relative">
+                <h2 class="fs-2">Login</h2>
+            </a>
+
+        </div>
+
     </footer>
 </th:block>
 </html>

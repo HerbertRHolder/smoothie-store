@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:insert="~{partials/meta_tags:: meta_tags}"></th:block>
+    <link th:rel="stylesheet" type="text/css" th:href="@{css/reset.css}">
+    <link th:rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+</head>
+<body>
+<th:block th:insert="~{partials/header:: header}"></th:block>
+<div class="breadcrumbs">
+    <p class="d-flex align-item-center gap-2">
+        <ion-icon class="fs-5" name="chevron-back-outline"></ion-icon>
+        <a th:href="@{/}" class="fs-5"><span>Home</span></a> / <a th:href="@{/collection}" class="fs-5">Menu</a>
+        / <a th:href="@{/collection/{id}(id=${product.getId()})}" class="fs-5"><span id="product-crumb" th:text="${product.getName()}"></span></a>
+    </p>
+</div>
+
+<main class="pt-5">
+<!--    <h1>Product</h1>-->
+<!--    <p th:text="${product.getName()}"></p>-->
+    <div class="img-cont_product">
+        <div class="">
+            <img width="105px" th:src="@{${product.getImg()}}" alt="">
+        </div>
+        <div class="product-title">
+            <h2 class="fs-6 text-center" th:text="${product.getName()}">Super smoothie</h2>
+            <h1 class="fs-3 text-center" th:text="${product.getDesc()}">Energy</h1>
+            <h1 class="fs-5 text-center" th:text="'$'+ ${product.getPrice()}"></h1>
+        </div>
+
+        <div class="product-btn">
+            <form th:action='@{/charge}' class="mb-20" th:method='POST' id='checkout-form'>
+                <input type='hidden' th:value='${amount}' name='amount' />
+                <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+                <script
+                        src='https://checkout.stripe.com/checkout.js'
+                        class='stripe-button'
+                        th:attr='data-key=${stripePublicKey},
+                data-amount=${amount},
+                data-currency=${currency}'
+                        data-name='PowerUp+'
+                        data-description='Checkout'
+                        data-image='img/orange.png'
+                        data-locale='auto'
+                        data-zip-code='false'>
+                </script>
+            </form>
+<!--            <a th:href="@{/collection/{id}(id=${product.getId()})}">-->
+<!--                <form th:action="@{/purchase}" th:method="POST">-->
+<!--                    <button type="button" th:id="${product.getInventory_id().getId()}" class="prd btn btn-danger">Confirm Purchase</button>-->
+<!--                </form>-->
+<!--            </a>-->
+        </div>
+    </div>
+
+
+
+
+
+
+</main>
+
+
+<th:block th:insert="~{partials/footer:: footer}"></th:block>
+<th:block th:insert="~{partials/scripts:: scripts}"></th:block>
+</body>
+</html>
